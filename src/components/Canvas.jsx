@@ -41,6 +41,7 @@ export default function Home() {
       <div>
         <h1>User: {user?.username || "Not available"}</h1>
         <p>Content: {content?.portalName || "Not available"}</p>
+        <p>Show all Content: {content || "Not available"}</p>
       </div>
     </main>
   );
