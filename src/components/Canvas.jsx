@@ -5,18 +5,19 @@ export default function Home() {
   const [user, setUser] = useState(null);
   const [content, setContent] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [reaction, setReaction] = useState(0);
 
   useEffect(() => {
-    async function fetchData() {
+      async function fetchData() {
       try {
-        const canvasClient = new CanvasClient();
-        const response = await canvasClient.ready();
-        
-        const handleContentReaction = (reaction) => {
+          const canvasClient = new CanvasClient();
+          const response = await canvasClient.ready();
+          
+          const handleContentReaction = (reaction) => {
           console.log('Reaction received:', reaction);
-          // Add your custom logic here
-          if (reaction.reactionType === 'like') {
-              console.log('User liked the content!');
+          if (reaction.status === 'reacted') {
+              reaction += 1 
+              console.log('User reacted');
           }
       };
 
