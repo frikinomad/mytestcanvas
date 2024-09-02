@@ -10,20 +10,20 @@ export default function Home() {
   useEffect(() => {
       async function fetchData() {
       try {
-          const canvasClient = new CanvasClient();
-          const response = await canvasClient.ready();
-          
-          const handleContentReaction = (reactionResponse) => {
-            console.log('Reaction received:', reaction);
-            const status = reactionResponse.untrusted.status;
-              console.log('Reaction status:', status);
-              
-              // Handle the reaction based on the status
-              if (status === 'reacted') {
-                  setReactionCount(reactionCount+1)
-                  console.log('User reacted to the content!');
-              }
-          };
+        const canvasClient = new CanvasClient();
+        const response = await canvasClient.ready();
+        
+        const handleContentReaction = (reactionResponse) => {
+          console.log('Reaction received:', reactionResponse);
+          const status = reactionResponse.untrusted.status;
+            console.log('Reaction status:', status);
+            
+            // Handle the reaction based on the status
+            if (status === 'reacted') {
+                setReactionCount(reactionCount+1)
+                console.log('User reacted to the content!');
+            }
+        };
 
         canvasClient.onContentReaction(handleContentReaction);
 
