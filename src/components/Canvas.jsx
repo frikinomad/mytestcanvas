@@ -10,14 +10,16 @@ export default function Home() {
     async function fetchData() {
       try {
         const canvasClient = new CanvasClient();
+        const reaction = canvasClient.onContentReaction();
         const response = await canvasClient.ready();
+
+        console.log(reaction);
 
         if (response) {
           const user = response.untrusted.user;
           const content = response.untrusted.content;
           console.log(user);
           console.log(content);
-          console.log("response" + response)
 
           if (user && content) {
             setUser(user);
