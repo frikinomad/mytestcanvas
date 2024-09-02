@@ -10,10 +10,17 @@ export default function Home() {
     async function fetchData() {
       try {
         const canvasClient = new CanvasClient();
-        const reaction = canvasClient.onContentReaction();
         const response = await canvasClient.ready();
+        
+        const handleContentReaction = (reaction) => {
+          console.log('Reaction received:', reaction);
+          // Add your custom logic here
+          if (reaction.reactionType === 'like') {
+              console.log('User liked the content!');
+          }
+      };
 
-        console.log(reaction);
+        canvasClient.onContentReaction(handleContentReaction);
 
         if (response) {
           const user = response.untrusted.user;
