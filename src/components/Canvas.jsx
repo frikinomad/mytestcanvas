@@ -17,6 +17,7 @@ export default function Home() {
           const content = response.untrusted.content;
           console.log(user);
           console.log(content);
+          console.log("response" + response)
 
           if (user && content) {
             setUser(user);
@@ -41,7 +42,6 @@ export default function Home() {
       <div>
         <h1>User: {user?.username || "Not available"}</h1>
         <p>Content: {content?.portalName || "Not available"}</p>
-        <p>Show all Content: {content || "Not available"}</p>
       </div>
     </main>
   );
